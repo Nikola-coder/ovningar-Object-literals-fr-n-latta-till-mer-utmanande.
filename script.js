@@ -10,6 +10,12 @@
 
 // 6. Lägg till en student i ett ämnes studentarray. Skriv ut och inspektera i konsolen.
 
+// teacherBenjamin.subjects.push("matematik") 
+// teacherBenjamin.subjects.unshift("fysik")
+
+
+// 7. För att lösa problematiken i de två senaste uppgifterna så bör man i sådana här fall lägga till kopplingen i båda objekten. Alltså vi börjar med att lägga till ett ämne i en lärarens ämnesarray, och sen byter vi ut det tomma lärarobjekten i ämnet mot läraren. Då har vi en referens på båda sidorna. Skapa nu en funktion som heter addSubjectToTeacher som tar emot ett ämne och en lärare, och parar ihop dessa. Returnera sen läraren så du kan se förändringen i lärarens ämnesarray.
+
 let medieinstitutet = {
     name: "medieinstitutet",
     address: [],
@@ -17,24 +23,29 @@ let medieinstitutet = {
     city: [],
     students: [],
     teachers: [],
+
+    addTeacher: function(teacher){
+        this.teachers.push(teacher)
+        return this
+    }
 };
 
 let matematik = {
-    name: [],
+    name: "matematik",
     students: [],
-    teachers: {},
+    teacher: {},
 };
 
 matematik.students.push("stella")
 
 let kemi = {
-    name: [],
+    name: "kemi",
     students: [],
     teachers: {},
 };
 
 let fysik = {
-    name: [],
+    name: "fysik",
     students: [],
     teachers: {},
 };
@@ -72,28 +83,60 @@ let stella = {
     age: [],
     gender: [],
     subjects: [],
-};
 
-let teacherFredrik = {
-    name: [],
-    subjects: [],
-
-    addSubjectToTeacher: function (teacherFredrik){
-      this.name.push("matematik")
-      teacherFredrik.name.push(this)
-
-      return this;
+    enlistToSubject: function(list1, list2, list3){
+        this.subjects.push(list1, list2, list3)
+        return this
     }
 };
 
-let teacherBenjamin = {
-    name: [],
+let teacherFredrik = {
+    name: "Fredrik",
     subjects: [],
+
+    addSubjectToTeacher: function (subject){
+        this.subjects.push(subject)
+        subject.teacher = this
+        return this
+    }
+   
 };
 
-teacherBenjamin.subjects.push("matematik") 
-teacherBenjamin.subjects.unshift("fysik")
+let teacherBenjamin = {
+    name: "benjamin",
+    subjects: [],
+
+
+    enlistToSubject: function(list1, list2, list3){
+        this.subjects.push(list1, list2, list3)
+        return this
+    }
+
+    // addSubjectToTeacher: function (subject){
+    //     this.subjects.push(subject)
+    //     subject.teacher  = this
+    //     return this
+    // }
+
+    
+    
+};
+
+// teacherBenjamin.addSubjectToTeacher = function(subject){
+//     this.subject.push(subject)
+//     subject.teacher = this
+//     return this
+// }
+// 8. Varför ha en fristående funktion som lägger till ämne till en lärare? Varför inte bara lägga till en funktion (alltså en metod eftersom funktionen då är kopplad till ett specifikt objekt) i lärarnas objekt som en egenskap? Till exempel:
+
+//9.  Skapa följande metoder (Någon eller ett par av metoderna kan förekomma flera gånger fast på olika objekt med olika logik) och lägg in de i rätt typ av objekt: addTeacher, enlistToSubject, addStudent, addSubject
 
 
 
-// 7. För att lösa problematiken i de två senaste uppgifterna så bör man i sådana här fall lägga till kopplingen i båda objekten. Alltså vi börjar med att lägga till ett ämne i en lärarens ämnesarray, och sen byter vi ut det tomma lärarobjekten i ämnet mot läraren. Då har vi en referens på båda sidorna. Skapa nu en funktion som heter addSubjectToTeacher som tar emot ett ämne och en lärare, och parar ihop dessa. Returnera sen läraren så du kan se förändringen i lärarens ämnesarray.
+
+// .addstudent = function(){
+
+// }
+// .addsubject = function(){
+
+// }
